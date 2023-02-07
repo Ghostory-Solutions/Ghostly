@@ -1,4 +1,4 @@
-# Catly
+# Ghostly
 Private & Secure Stats 
 # Config
 Rename config.ex.js to config.js
