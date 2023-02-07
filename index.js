@@ -1,11 +1,11 @@
+const config = require("./config")
+
 const express = require('express')
-var parser = require('ua-parser-js');
+const parser = require('ua-parser-js');
 const Fson = require('fson-db');
 
 const db = Fson("./db");
 const app = express()
-
-const whitelist = ["https://frcat.xyz"]
 
 db.browser = []
 db.engine = []
@@ -24,7 +24,7 @@ app.get('/stats/get', (req, res) => {
 })
 
 app.get('*', (req, res) => {
-    if (!req.get('origin')?.includes(whitelist)) return res.sendFile(__dirname + "/pixel.webp");
+    if (!req.get('origin')?.includes(config.whitelist)) return res.sendFile(__dirname + "/pixel.webp");
 
     res.sendFile(__dirname + "/pixel.webp")
 
@@ -75,6 +75,6 @@ app.get('*', (req, res) => {
     } catch { }
 })
 
-app.listen(3000, () => {
-    console.log(`http://localhost:3000`)
+app.listen(config.port, () => {
+    console.log(`running at :${config.port}`)
 })
