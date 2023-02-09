@@ -32,7 +32,7 @@ app.get('*', (req, res) => {
 
     console.log(ua)
 
-    try { if (ua.browser.name == "undefined") return;
+    try { if (ua.browser.name.includes("undefined")) return;
         if (!db.browser.some(e => e.name === ua.browser.name)) {
             db.browser.push({
                 name: ua.browser.name,
@@ -46,7 +46,7 @@ app.get('*', (req, res) => {
         }
     } catch { }
 
-    try { if (ua.os.name == "undefined") return;
+    try { if (ua.os.name.includes("undefined")) return;
         if (!db.engine.some(e => e.name === ua.engine.name)) {
             db.engine.push({
                 name: ua.engine.name,
@@ -60,7 +60,7 @@ app.get('*', (req, res) => {
         }
     } catch { }
 
-    try { if (ua.os.name == "undefined") return;
+    try { if (ua.os.name.includes("undefined")) return;
         if (!db.os.some(e => e.name === ua.os.name)) {
             db.os.push({
                 name: ua.os.name,
